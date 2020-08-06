@@ -29,9 +29,9 @@ const cityPciker = ({ cityParsing }) => {
         <TextField
           color="secondary"
           select
-          label="City"
+          label="City" labe
           helperText="List of City"
-          onChange={(e) =>
+          onChange={() =>
             cityParsing(data.nx[e.target.value], data.ny[e.target.value])
           }
           className={styles.picker}
