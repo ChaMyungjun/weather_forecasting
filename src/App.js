@@ -8,7 +8,7 @@ import styles from "./App.module.css";
 const App = () => {
   const [nx, setNx] = useState(0);
   const [ny, setNy] = useState(0);
-  const cityCode = () => {
+  const cityCode = (cityNx, cityNy) => {
     setNx(cityNx);
     setNy(cityNy);
   };

@@ -31,7 +31,7 @@ const cityPciker = ({ cityParsing }) => {
           select
           label="City" labe
           helperText="List of City"
-          onChange={() =>
+          onChange={(e) =>
             cityParsing(data.nx[e.target.value], data.ny[e.target.value])
           }
           className={styles.picker}
