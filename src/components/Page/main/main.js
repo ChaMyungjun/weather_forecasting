@@ -28,7 +28,7 @@ const WeatherMain = ({ nx, ny }) => {
     <React.Fragment>
       <CssBaseline />
       <div className={styles.mainForm}>
-        <div className>
+        <div>
           {type === "1" ? (
             <img src={rainy} alt="rain" className={styles.imgForm} />
           ) : type === "2" ? (
