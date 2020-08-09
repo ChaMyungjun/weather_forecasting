@@ -1,26 +1,9 @@
 import React from "react";
-import {
-  TextField,
-  MenuItem,
-  CssBaseline,
-} from "@material-ui/core";
+import { TextField, MenuItem, CssBaseline } from "@material-ui/core";
 import styles from "./cityPicker.module.css";
+import data from "../../city.json";
 
 const cityPciker = ({ cityParsing }) => {
-  const data = {
-    city: [
-      "Seoul",
-      "Busan",
-      "Daegu",
-      "Incheon",
-      "Gwangu",
-      "Daejeon",
-      "Ulsan",
-      "Jeju",
-    ],
-    nx: ["60", "98", "89", "55", "58", "67", "102", "52"],
-    ny: ["127", "76", "90", "124", "74", "100", "84", "38"],
-  };
   //const classes = useStyles();
   return (
     <React.Fragment>
@@ -29,7 +12,8 @@ const cityPciker = ({ cityParsing }) => {
         <TextField
           color="secondary"
           select
-          label="City" labe
+          label="City"
+          labe
           helperText="List of City"
           onChange={(e) =>
             cityParsing(data.nx[e.target.value], data.ny[e.target.value])
@@ -38,8 +22,7 @@ const cityPciker = ({ cityParsing }) => {
         >
           {data.city.map((city, index) => {
             return (
-              <MenuItem key={city} value={index} 
-          >
+              <MenuItem key={city} value={index}>
                 {city}
               </MenuItem>
             );

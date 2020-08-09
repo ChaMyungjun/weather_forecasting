@@ -46,7 +46,7 @@ const WeatherMain = ({ nx, ny }) => {
           <Typography className={styles.tempText} variant="h2" component="h1">
             {temp}&deg;
           </Typography>
-          <Typography>비가와요: {rain}mm</Typography>
+          <Typography>시간당 강수량: {rain}mm</Typography>
         </div>
       </div>
     </React.Fragment>
