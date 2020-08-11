@@ -1,15 +1,12 @@
 import axios from "axios";
 
-export const weatherData = async (nx, ny) => {
-  const data = await axios.get(`http://localhost:4000/api?nx=${nx}&ny=${ny}`);
+export const FETCH_FLIGHT = "FETCH_FLIGHT";
 
-  const info = {};
-  info.baseTime = data.data.baseTime;
-  info.baseDate = data.data.baseDate;
-
-  info.TMP = data.data.T1H;
-  info.RNH = data.data.RN1;
-  info.SKY = data.data.PTY;
-
-  return info;
-};
+export function getAllFights() {
+  const request = axios.get("http://localhost:4000/api?nx=60&ny=127");
+  console.log(request);
+  return {
+    type: FETCH_FLIGHT,
+    payload: request,
+  };
+}
