@@ -5,27 +5,27 @@ import snow from "../../../img/snow.png";
 import shower from "../../../img/meteor-shower.png";
 import ice from "../../../img/ice.png";
 import rainy from "../../../img/rain.png";
-import {weatherRead} from '../../modules/weather'
+import { weatherRead } from "../../modules/weather";
 import Clock from "../../Clock/clock";
 import styles from "./main.module.css";
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from "react-redux";
 
 const WeatherMain = ({ nx, ny }) => {
   const [temp, setTemp] = useState(0);
   const [rain, setRain] = useState(0);
   const [type, setType] = useState(0);
 
-  const {data, error} = useSelector(({weather}) => ({
+  const { data, error } = useSelector(({ weather }) => ({
     data: weather.data,
-    error: weather.error
+    error: weather.error,
   }));
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(weatherRead(nx, ny));
-    console.log(weatherRead(nx, ny))
-  }, [dispatch, nx, ny])
+    console.log(weatherRead(nx, ny));
+  }, [dispatch, nx, ny]);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -37,9 +37,7 @@ const WeatherMain = ({ nx, ny }) => {
   //   fetchData();
   // }, [nx, ny]);
 
-useEffect(() => {
-
-})
+  useEffect(() => {});
 
   return (
     <React.Fragment>
@@ -54,8 +52,12 @@ useEffect(() => {
             <img src={snow} alt="snow" className={styles.imgForm} />
           ) : type === "4" ? (
             <img src={shower} alt="shower" className={styles.imgForm} />
-          ) : (
+          ) : type === "0" ? (
             <img src={clear} alt="clear" className={styles.imgForm} />
+          ) : (
+            <Typography className={styles.imgForm}>
+              지역이 선택 되지않았습니다
+            </Typography>
           )}
           <Clock />
         </div>

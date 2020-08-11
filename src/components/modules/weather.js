@@ -9,7 +9,7 @@ const [WEATHER, WEATHER_SUCCESS, WEATHER_FAILURE] = createRequestActionTypes(
   "weather/WEATHER"
 );
 
-export const weatherRead = createAction(WEATHER, (nx, ny) => (nx, ny));
+export const weatherRead = createAction(WEATHER, (nx) => (nx));
 
 const readWeatherSaga = createRequestSaga(WEATHER, weatherAPI.weather);
 export function* weatherSaga() {
