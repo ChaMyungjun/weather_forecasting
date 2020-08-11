@@ -26,4 +26,4 @@
 
 import client from "./client";
 
-export const weather = ({ nx, ny }) => console.log(nx, ny);
+export const weather = ({ nx, ny }) => console.log({ nx, ny });

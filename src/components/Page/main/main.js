@@ -27,7 +27,6 @@ const WeatherMain = ({ nx, ny }) => {
     console.log(weatherRead({nx, ny}));
   }, [nx, ny]);
 
-  console.log(data, error)
 
   // useEffect(() => {
   //   async function fetchData() {

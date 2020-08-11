@@ -20,16 +20,19 @@ export function* weatherSaga() {
 }
 
 const initialState = {
-  data: null,
+  weather: {
+    nx: 0,
+    ny: 0
+  },
   error: null,
 };
 
 const weather = handleActions(
   {
-    [WEATHER_SUCCESS]: (state, { nx, ny }) => ({
+    [WEATHER_SUCCESS]: (state, action) => ({
       ...state,
-      nx,
-      ny,
+      nx: action.payload.weather.nx,
+      ny: action.payload.weather.ny
     }),
     [WEATHER_FAILURE]: (state, { payload: error }) => ({
       ...state,
