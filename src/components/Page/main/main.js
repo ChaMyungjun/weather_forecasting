@@ -5,24 +5,41 @@ import snow from "../../../img/snow.png";
 import shower from "../../../img/meteor-shower.png";
 import ice from "../../../img/ice.png";
 import rainy from "../../../img/rain.png";
-import { weatherData } from "../../../api";
+import {weatherRead} from '../../modules/weather'
 import Clock from "../../Clock/clock";
 import styles from "./main.module.css";
+import {useSelector, useDispatch} from 'react-redux'
 
 const WeatherMain = ({ nx, ny }) => {
   const [temp, setTemp] = useState(0);
   const [rain, setRain] = useState(0);
   const [type, setType] = useState(0);
 
+  const {data, error} = useSelector(({weather}) => ({
+    data: weather.data,
+    error: weather.error
+  }));
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    async function fetchData() {
-      const data = await weatherData(nx, ny);
-      setTemp(data.TMP);
-      setRain(data.RNH);
-      setType(data.SKY);
-    }
-    fetchData();
-  }, [nx, ny]);
+    dispatch(weatherRead(nx, ny));
+    console.log(weatherRead(nx, ny))
+  }, [dispatch, nx, ny])
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const data = await weatherData(nx, ny);
+  //     setTemp(data.TMP);
+  //     setRain(data.RNH);
+  //     setType(data.SKY);
+  //   }
+  //   fetchData();
+  // }, [nx, ny]);
+
+useEffect(() => {
+
+})
 
   return (
     <React.Fragment>
