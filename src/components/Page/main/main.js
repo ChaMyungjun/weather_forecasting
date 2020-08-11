@@ -24,8 +24,10 @@ const WeatherMain = ({ nx, ny }) => {
 
   useEffect(() => {
     dispatch(weatherRead(nx, ny));
-    console.log(weatherRead(nx, ny));
-  }, [dispatch, nx, ny]);
+    console.log(weatherRead({nx, ny}));
+  }, [nx, ny]);
+
+  console.log(data, error)
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -36,8 +38,6 @@ const WeatherMain = ({ nx, ny }) => {
   //   }
   //   fetchData();
   // }, [nx, ny]);
-
-  useEffect(() => {});
 
   return (
     <React.Fragment>

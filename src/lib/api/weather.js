@@ -14,7 +14,6 @@
 //   return info;
 // };
 
-
 // import axios from 'axios'
 
 // export const FETCH_FLIGHT = 'FETCH_FLIGHT';
@@ -25,7 +24,6 @@
 //   console.log(request)
 // }
 
-import client from './client'
+import client from "./client";
 
-export const weather = (nx, ny) => 
-  client.get('http://localhost:4000/api?nx=${nx}&ny=${ny}')
+export const weather = ({ nx, ny }) => console.log(nx, ny);
