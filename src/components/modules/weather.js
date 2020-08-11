@@ -24,15 +24,15 @@ const initialState = {
     nx: 0,
     ny: 0
   },
+  data: {},
   error: null,
 };
 
 const weather = handleActions(
   {
-    [WEATHER_SUCCESS]: (state, action) => ({
+    [WEATHER_SUCCESS]: (state, {payload: data}) => ({
       ...state,
-      nx: action.payload.weather.nx,
-      ny: action.payload.weather.ny
+      data,
     }),
     [WEATHER_FAILURE]: (state, { payload: error }) => ({
       ...state,
