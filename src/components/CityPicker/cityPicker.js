@@ -13,12 +13,14 @@ const cityPciker = ({ cityParsing }) => {
           color="secondary"
           select
           label="City"
-          labe
           helperText="List of City"
-          onChange={(e) =>
-            cityParsing(data.nx[e.target.value], data.ny[e.target.value])
-          }
           className={styles.picker}
+          onChange={(e) =>
+            cityParsing(
+              data.nx[parseInt(e.target.value)],
+              data.ny[parseInt(e.target.value)]
+            )
+          }
         >
           {data.city.map((city, index) => {
             return (
