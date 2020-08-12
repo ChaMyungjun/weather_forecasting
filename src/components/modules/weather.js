@@ -44,3 +44,15 @@ const weather = handleActions(
 );
 
 export default weather;
+
+
+// import {WEATHER} from '../../lib/api/webAPIUtil'
+
+// export default function(state = [], action) {
+//   switch(action.payload) {
+//     case WEATHER:
+//       console.log(action)
+//       return [action.payload.data, ...state]
+//   }
+//   return state
+// }

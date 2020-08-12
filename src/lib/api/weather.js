@@ -1,4 +1,3 @@
-// import axios from "axios";
 
 // export const weatherData = async (nx, ny) => {
 //   const data = await axios.get(`http://localhost:4000/api?nx=${nx}&ny=${ny}`);
@@ -14,29 +13,24 @@
 //   return info;
 // };
 
-// import axios from 'axios'
-
-// export const FETCH_FLIGHT = 'FETCH_FLIGHT';
-
-// export function getAllFlights() {
-//   const request = axios.get('http://localhost:4000/api?nx=60&ny=127')
-
-//   console.log(request)
+// export function getAllFlights(request) {
+//   console.log(request);
+//   return {
+//     type: WEATHER,
+//     payload: request,
+//   };
 // }
 
 import client from "./client";
-import { WEATHER } from "../../components/modules/weather";
+// import { WEATHER } from "../../components/modules/weather";
 
-export function getAllFlights(request) {
-  console.log(request);
-  return {
-    type: WEATHER,
-    payload: request,
-  };
-}
+// export function getAllFlights(request) {
+//   console.log(request);
+//   return {
+//     type: WEATHER,
+//     payload: request,
+//   };
+// }
 
 export const weather = ({ nx, ny }) =>
   client.get(`http://localhost:4000/api?nx=${nx}&ny=${ny}`)
-  .then(function(response) {
-    WEATHER.getAllFlights(response)
-  })

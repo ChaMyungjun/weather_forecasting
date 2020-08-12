@@ -5,7 +5,7 @@ import snow from "../../../img/snow.png";
 import shower from "../../../img/meteor-shower.png";
 import ice from "../../../img/ice.png";
 import rainy from "../../../img/rain.png";
-import { weatherRead } from "../../modules/weather";
+import {weatherRead} from '../../../components/modules/weather'
 import Clock from "../../Clock/clock";
 import styles from "./main.module.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,12 +24,11 @@ const WeatherMain = ({ nx, ny }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(weatherRead({ nx, ny }));
+    async function fetchedData() {
+      await dispatch(weatherRead({nx, ny}))
+    }
+    fetchedData()
   }, [nx, ny]);
-
-  useEffect(() => {
-    dispatch(getAllFlights());
-  }, []);
 
   // useEffect(() => {
   //   async function fetchData() {
