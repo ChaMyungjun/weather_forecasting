@@ -4,7 +4,6 @@ import styles from "./cityPicker.module.css";
 import data from "../../city.json";
 
 const cityPciker = ({ cityParsing }) => {
-  //const classes = useStyles();
   return (
     <React.Fragment>
       <CssBaseline />

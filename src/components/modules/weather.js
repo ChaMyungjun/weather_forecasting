@@ -5,10 +5,11 @@ import createRequestSaga, {
 import * as weatherAPI from "../../lib/api/weather";
 import { takeLatest } from "redux-saga/effects";
 
-export const [WEATHER, WEATHER_SUCCESS, WEATHER_FAILURE] = createRequestActionTypes(
-  "weather/WEATHER"
-);
-
+export const [
+  WEATHER,
+  WEATHER_SUCCESS,
+  WEATHER_FAILURE,
+] = createRequestActionTypes("weather/WEATHER");
 
 export const weatherRead = createAction(WEATHER, ({ nx, ny }) => ({
   nx,
@@ -23,7 +24,7 @@ export function* weatherSaga() {
 const initialState = {
   weather: {
     nx: 0,
-    ny: 0
+    ny: 0,
   },
   data: {},
   error: null,
@@ -31,7 +32,7 @@ const initialState = {
 
 const weather = handleActions(
   {
-    [WEATHER_SUCCESS]: (state, {payload: data}) => ({
+    [WEATHER_SUCCESS]: (state, { payload: data }) => ({
       ...state,
       data,
     }),

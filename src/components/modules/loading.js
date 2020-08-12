@@ -29,4 +29,4 @@ const loading = handleActions(
   initialState
 );
 
-export default  loading;
+export default loading;
