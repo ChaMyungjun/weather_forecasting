@@ -26,8 +26,11 @@ const WeatherMain = ({ nx, ny }) => {
   useEffect(() => {
     async function fetchedData() {
       await dispatch(weatherRead({nx, ny}))
+      setTemp(data.T1H)
+      setRain(data.RN1)
+      setType(data.PTY)
     }
-    fetchedData()
+    fetchedData() 
   }, [nx, ny]);
 
   // useEffect(() => {
