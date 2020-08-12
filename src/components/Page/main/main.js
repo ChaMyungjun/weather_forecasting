@@ -5,7 +5,7 @@ import snow from "../../../img/snow.png";
 import shower from "../../../img/meteor-shower.png";
 import ice from "../../../img/ice.png";
 import rainy from "../../../img/rain.png";
-import {weatherRead} from '../../../components/modules/weather'
+import { weatherRead } from "../../../components/modules/weather";
 import Clock from "../../Clock/clock";
 import styles from "./main.module.css";
 import { useSelector, useDispatch } from "react-redux";
@@ -24,14 +24,10 @@ const WeatherMain = ({ nx, ny }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function fetchedData() {
-      await dispatch(weatherRead({nx, ny}))
-      setTemp(data.T1H)
-      setRain(data.RN1)
-      setType(data.PTY)
-    }
-    fetchedData() 
-  }, [nx, ny]);
+    dispatch(weatherRead({ nx, ny }));
+    console.log({ data, error });
+    setType(data.PTY)
+  }, [dispatch, nx, ny]);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -43,7 +39,7 @@ const WeatherMain = ({ nx, ny }) => {
   //   fetchData();
   // }, [nx, ny]);
 
-  console.log({ data, error });
+
 
   return (
     <React.Fragment>
