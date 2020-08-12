@@ -25,20 +25,18 @@
 // }
 
 import client from "./client";
+import { WEATHER } from "../../components/modules/weather";
+
+export function getAllFlights(request) {
+  console.log(request);
+  return {
+    type: WEATHER,
+    payload: request,
+  };
+}
 
 export const weather = ({ nx, ny }) =>
-  client
-    .get(`http://localhost:4000/api?nx=${nx}&ny=${ny}`)
-    .then(function (response) {
-      const info = {};
-
-      info.baseTime = response.data.baseTime;
-      info.baseDate = response.data.baseDate;
-
-      info.TMP = response.data.T1H;
-      info.RNH = response.data.RN1;
-      info.SKY = response.data.PTY;
-
-      console.log(info)
-      return info
-    });
+  client.get(`http://localhost:4000/api?nx=${nx}&ny=${ny}`)
+  .then(function(response) {
+    WEATHER.getAllFlights(response)
+  })

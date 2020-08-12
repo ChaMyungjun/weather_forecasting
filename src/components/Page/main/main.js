@@ -9,6 +9,7 @@ import { weatherRead } from "../../modules/weather";
 import Clock from "../../Clock/clock";
 import styles from "./main.module.css";
 import { useSelector, useDispatch } from "react-redux";
+import { getAllFlights } from "../../../lib/api/weather";
 
 const WeatherMain = ({ nx, ny }) => {
   const [temp, setTemp] = useState(0);
@@ -23,9 +24,12 @@ const WeatherMain = ({ nx, ny }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(weatherRead({nx, ny}));
+    dispatch(weatherRead({ nx, ny }));
   }, [nx, ny]);
 
+  useEffect(() => {
+    dispatch(getAllFlights());
+  }, []);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -37,7 +41,7 @@ const WeatherMain = ({ nx, ny }) => {
   //   fetchData();
   // }, [nx, ny]);
 
-  console.log({ data, error })
+  console.log({ data, error });
 
   return (
     <React.Fragment>

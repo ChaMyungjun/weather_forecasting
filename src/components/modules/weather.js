@@ -5,9 +5,10 @@ import createRequestSaga, {
 import * as weatherAPI from "../../lib/api/weather";
 import { takeLatest } from "redux-saga/effects";
 
-const [WEATHER, WEATHER_SUCCESS, WEATHER_FAILURE] = createRequestActionTypes(
+export const [WEATHER, WEATHER_SUCCESS, WEATHER_FAILURE] = createRequestActionTypes(
   "weather/WEATHER"
 );
+
 
 export const weatherRead = createAction(WEATHER, ({ nx, ny }) => ({
   nx,
