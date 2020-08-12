@@ -32,34 +32,3 @@ const App = () => {
 };
 
 export default App;
-
-// import React from "react";
-// import { connect } from "react";
-// import { bindActionCreators } from "redux";
-// import { getAllFlights } from "./lib/api/index";
-
-// class App extends React.Component {
-//   componentWillMount() {
-//     this.props.selectFlight();
-//   }
-
-//   constructor(props) {
-//     super(props);
-//     this.state = {};
-//   }
-//   render() {
-//     return <div></div>;
-//   }
-// }
-
-// function mapStateToProps(state) {
-//   return {
-//     dest: state.icelandair,
-//   };
-// }
-
-// function mapDispatchToProps(dispatch) {
-//   return bindActionCreators({ selectFlight: getAllFlights }, dispatch);
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);

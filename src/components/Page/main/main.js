@@ -23,16 +23,6 @@ const WeatherMain = ({ nx, ny }) => {
     console.log({ data, error });
   }, [dispatch, nx, ny]);
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const data = await weatherData(nx, ny);
-  //     setTemp(data.TMP);
-  //     setRain(data.RNH);
-  //     setType(data.SKY);
-  //   }
-  //   fetchData();
-  // }, [nx, ny]);
-
   return (
     <React.Fragment>
       <CssBaseline />
