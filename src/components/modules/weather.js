@@ -5,7 +5,7 @@ import createRequestSaga, {
 import * as weatherAPI from "../../lib/api/weather";
 import { takeLatest } from "redux-saga/effects";
 
-export const [
+const [
   WEATHER,
   WEATHER_SUCCESS,
   WEATHER_FAILURE,

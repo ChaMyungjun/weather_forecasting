@@ -18,7 +18,7 @@ const WeatherMain = ({ nx, ny }) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(weatherRead({ nx, ny }));
     console.log({ data, error });
   }, [dispatch, nx, ny]);
