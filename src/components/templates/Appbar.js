@@ -14,6 +14,7 @@ import {
   List,
   ListItemText,
   Select,
+  TextField,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -23,6 +24,7 @@ import MailIcon from "@material-ui/icons/Mail";
 import clsx from "clsx";
 import WeatherMain from "../Page/main/main";
 import data from "../../city.json";
+import { ThemeContext } from "styled-components";
 
 const drawerWidth = 240;
 
@@ -102,7 +104,7 @@ const Appbar = ({ cityParsing, nx, ny }) => {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position="absolute"
         color="secondary"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
@@ -118,7 +120,7 @@ const Appbar = ({ cityParsing, nx, ny }) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" color="inherit" noWrap>
+          <Typography variant="h6" color="inherit" noWrap style = {{paddingTop: '5rem'}}>
             The Weather
           </Typography>
         </Toolbar>
@@ -140,22 +142,26 @@ const Appbar = ({ cityParsing, nx, ny }) => {
           </IconButton>
         </div>
         <Divider />
-        <List
-          onChange={(e) =>
-            cityParsing(
-              data.nx[parseInt(e.target.value)],
-              data.ny[parseInt(e.target.value)]
-            )
-          }
-        >
-          {data.city.map((city, index) => (
-            <ListItem button key={city} value={index}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={city} />
-            </ListItem>
-          ))}
+        <List>
+          <TextField
+            open={true}
+            select
+            onChange={(e) =>
+              cityParsing(
+                data.nx[parseInt(e.target.value)],
+                data.ny[parseInt(e.target.value)]
+              )
+            }
+          >
+            {data.city.map((city, index) => (
+              <ListItem button key={city} value={index}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={city} />
+              </ListItem>
+            ))}
+          </TextField>
         </List>
       </Drawer>
       <main
