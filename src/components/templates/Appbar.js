@@ -13,6 +13,7 @@ import {
   ListItem,
   List,
   ListItemText,
+  Select,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
@@ -21,7 +22,7 @@ import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
 import clsx from "clsx";
 import WeatherMain from "../Page/main/main";
-import city from "../../city.json";
+import data from "../../city.json";
 
 const drawerWidth = 240;
 
@@ -82,17 +83,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Appbar = () => {
+const Appbar = ({ cityParsing, nx, ny }) => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [nx, setNx] = React.useState(0);
-  const [ny, setNy] = React.useState(0);
 
-  const cityCode = (cityNx, cityNy) => {
-    setNx(cityNx);
-    setNy(cityNy);
-  };
+  console.log({ nx, ny });
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -143,22 +140,24 @@ const Appbar = () => {
           </IconButton>
         </div>
         <Divider />
-        <List
-          onChange={(e) =>
-            cityCode(
-              city.nx[parseInt(e.target.value)],
-              city.ny[parseInt(e.target.value)]
-            )
-          }
-        >
-          {city.city.map((city, index) => (
-            <ListItem button key={city} value={index}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={city} />
-            </ListItem>
-          ))}
+        <List>
+          <Select
+            onChange={(e) =>
+              cityParsing(
+                data.nx[parseInt(e.target.value)],
+                data.ny[parseInt(e.target.value)]
+              )
+            }
+          >
+            {data.city.map((city, index) => (
+              <ListItem button key={city} value={index}>
+                <ListItemIcon>
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={city} />
+              </ListItem>
+            ))}
+          </Select>
         </List>
       </Drawer>
       <main
