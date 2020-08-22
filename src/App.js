@@ -17,14 +17,6 @@ const App = () => {
   return (
     <React.Fragment>
       <MainTemplate>
-        {/* <Typography
-          align="center"
-          className={styles.head}
-          variant="h2"
-          component="h1"
-        >
-          Today's Weather
-        </Typography> */}
         <Appbar />
         <City cityParsing={cityCode} />
         <WeatherMain nx={nx} ny={ny} />
