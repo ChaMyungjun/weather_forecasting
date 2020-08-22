@@ -5,16 +5,23 @@ import {
   Toolbar,
   IconButton,
   makeStyles,
-  createMuiTheme,
   CssBaseline,
   useTheme,
   Drawer,
   Divider,
+  ListItemIcon,
+  ListItem,
+  List,
+  ListItemText,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import InboxIcon from "@material-ui/icons/MoveToInbox";
+import MailIcon from "@material-ui/icons/Mail";
 import clsx from "clsx";
+import WeatherMain from "../Page/main/main";
+import city from "../../city.json";
 
 const drawerWidth = 240;
 
@@ -53,6 +60,8 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
     justifyContent: "flex-end",
   },
   content: {
@@ -77,7 +86,13 @@ const Appbar = () => {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [nx, setNx] = React.useState(0);
+  const [ny, setNy] = React.useState(0);
 
+  const cityCode = (cityNx, cityNy) => {
+    setNx(cityNx);
+    setNy(cityNy);
+  };
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -127,7 +142,33 @@ const Appbar = () => {
             )}
           </IconButton>
         </div>
+        <Divider />
+        <List
+          onChange={(e) =>
+            cityCode(
+              city.nx[parseInt(e.target.value)],
+              city.ny[parseInt(e.target.value)]
+            )
+          }
+        >
+          {city.city.map((city, index) => (
+            <ListItem button key={city} value={index}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={city} />
+            </ListItem>
+          ))}
+        </List>
       </Drawer>
+      <main
+        className={clsx(classes.content, {
+          [classes.contentShift]: open,
+        })}
+      >
+        <div className={classes.drawerHeader} />
+        <WeatherMain nx={nx} ny={ny} />
+      </main>
     </div>
   );
 };
