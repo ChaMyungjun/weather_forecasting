@@ -9,17 +9,6 @@ import {
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: "#757ce8",
-    },
-    secondary: {
-      light: "#ff7961",
-    },
-  },
-});
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
