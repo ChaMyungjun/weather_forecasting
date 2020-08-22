@@ -140,24 +140,22 @@ const Appbar = ({ cityParsing, nx, ny }) => {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          <Select
-            onChange={(e) =>
-              cityParsing(
-                data.nx[parseInt(e.target.value)],
-                data.ny[parseInt(e.target.value)]
-              )
-            }
-          >
-            {data.city.map((city, index) => (
-              <ListItem button key={city} value={index}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={city} />
-              </ListItem>
-            ))}
-          </Select>
+        <List
+          onChange={(e) =>
+            cityParsing(
+              data.nx[parseInt(e.target.value)],
+              data.ny[parseInt(e.target.value)]
+            )
+          }
+        >
+          {data.city.map((city, index) => (
+            <ListItem button key={city} value={index}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={city} />
+            </ListItem>
+          ))}
         </List>
       </Drawer>
       <main
