@@ -143,7 +143,9 @@ const Appbar = ({ cityParsing, nx, ny }) => {
         </div>
         <Divider />
         <List>
-          <div
+          <Select
+            open={true}
+            labelId = "Choice City"
             onChange={(e) =>
               cityParsing(
                 data.nx[parseInt(e.target.value)],
@@ -159,7 +161,7 @@ const Appbar = ({ cityParsing, nx, ny }) => {
                 <ListItemText primary={city} />
               </ListItem>
             ))}
-          </div>
+          </Select>
         </List>
       </Drawer>
       <main
