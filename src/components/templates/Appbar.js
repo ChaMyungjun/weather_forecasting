@@ -24,7 +24,6 @@ import MailIcon from "@material-ui/icons/Mail";
 import clsx from "clsx";
 import WeatherMain from "../Page/main/main";
 import data from "../../city.json";
-import { ThemeContext } from "styled-components";
 
 const drawerWidth = 240;
 
@@ -142,26 +141,22 @@ const Appbar = ({ cityParsing, nx, ny }) => {
           </IconButton>
         </div>
         <Divider />
-        <List>
-          <TextField
-            open={true}
-            select
-            onChange={(e) =>
-              cityParsing(
-                data.nx[parseInt(e.target.value)],
-                data.ny[parseInt(e.target.value)]
-              )
-            }
-          >
-            {data.city.map((city, index) => (
-              <ListItem button key={city} value={index}>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={city} />
-              </ListItem>
-            ))}
-          </TextField>
+        <List
+          onChange={(e) =>
+            cityParsing(
+              data.nx[parseInt(e.target.value)],
+              data.ny[parseInt(e.target.value)]
+            )
+          }
+        >
+          {data.city.map((city, index) => (
+            <ListItem button key={city} value={index}>
+              <ListItemIcon>
+                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+              </ListItemIcon>
+              <ListItemText primary={city} />
+            </ListItem>
+          ))}
         </List>
       </Drawer>
       <main
