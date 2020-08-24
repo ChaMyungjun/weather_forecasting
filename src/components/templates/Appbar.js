@@ -141,22 +141,30 @@ const Appbar = ({ cityParsing, nx, ny }) => {
           </IconButton>
         </div>
         <Divider />
-        <List
-          onChange={(e) =>
-            cityParsing(
-              data.nx[parseInt(e.target.value)],
-              data.ny[parseInt(e.target.value)]
-            )
-          }
-        >
-          {data.city.map((city, index) => (
-            <ListItem button key={city} value={index}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={city} />
-            </ListItem>
-          ))}
+        <List>
+          <div>
+            <TextField
+              id="filled-select-city"
+              select
+              filled
+              label="Select on an option"
+              onChange={(e) =>
+                cityParsing(
+                  data.nx[parseInt(e.target.value)],
+                  data.ny[parseInt(e.target.value)]
+                )
+              }
+            >
+              {data.city.map((city, index) => (
+                <ListItem button key={city} value={index}>
+                  <ListItemIcon>
+                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  </ListItemIcon>
+                  <ListItemText primary={city} />
+                </ListItem>
+              ))}
+            </TextField>
+          </div>
         </List>
       </Drawer>
       <main
